@@ -7,3 +7,4 @@ export * from "./company/create";
 export * from "./company/edit";
 export * from "./task/list";
 export * from "./task/create";
+export * from "./task/edit";
