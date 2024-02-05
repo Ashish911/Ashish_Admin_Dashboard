@@ -3,7 +3,12 @@ import {
   KanbanBoard,
   KanbanBoardContainer,
 } from "@/components/tasks/kanban/board";
+import {
+  KanbanAddCardButton,
+  ProjectCardMemo,
+} from "@/components/tasks/kanban/card";
 import { KanbanColumn } from "@/components/tasks/kanban/column";
+import { KanbanItem } from "@/components/tasks/kanban/item";
 import { UPDATE_TASK_STAGE_MUTATION } from "@/graphql/mutation";
 import { TASKS_QUERY, TASK_STAGES_QUERY } from "@/graphql/queries";
 import { Task, TaskStage, TaskUpdateInput } from "@/graphql/schema.types";
@@ -70,7 +75,7 @@ const TaskList = ({ children }: React.PropsWithChildren) => {
     const unassignedStage = tasks.data.filter((task) => task.stageId === null);
 
     // prepare unassigned stage
-    const grouped: TaskStage[] = stages.data.map((stage) => ({
+    const grouped = stages.data.map((stage) => ({
       ...stage,
       tasks: tasks.data.filter((task) => task.stageId?.toString() === stage.id),
     }));
