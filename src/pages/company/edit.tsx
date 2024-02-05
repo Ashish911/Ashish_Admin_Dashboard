@@ -1,4 +1,4 @@
-import { Col, Row } from "antd/lib";
+import { Col, Form, Input, InputNumber, Row, Select } from "antd/lib";
 import React from "react";
 import { Edit, useForm, useSelect } from "@refinedev/antd";
 import {
@@ -14,6 +14,15 @@ import {
 import { USERS_SELECT_QUERY } from "@/graphql/queries";
 import { UPDATE_COMPANY_MUTATION } from "@/graphql/mutation";
 import { HttpError } from "@refinedev/core";
+import { getNameInitials } from "@/utilities";
+import CustomAvatar from "@/components/custom-avatar";
+import { SelectOptionWithAvatar } from "@/components/select-option-with-avatar";
+import {
+  businessTypeOptions,
+  companySizeOptions,
+  industryOptions,
+} from "@/constants";
+import CompanyContactsTable from "./contacts-table";
 
 const EditPage = () => {
   const { saveButtonProps, formProps, formLoading, queryResult } = useForm<
